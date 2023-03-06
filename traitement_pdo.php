@@ -13,7 +13,7 @@ try {
 }
 
 // Préparation de la requête SQL
-$req = $bdd->prepare('INSERT INTO utilisateur (nom, prenom, email, motdepasse) VALUES (:nom, :prenom, :email, :motdepasse)');
+$req = $bdd->prepare('INSERT INTO utilisateurs (nom, prenom, email, motdepasse) VALUES (:nom, :prenom, :email, :motdepasse)');
 
 // Exécution de la requête SQL avec les valeurs des champs du formulaire
 $req->execute(array(
