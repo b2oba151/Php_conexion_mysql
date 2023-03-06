@@ -1,5 +1,5 @@
 <?php 
-function parcourir_table(string $table, array $champs, $champ){
+function parcourir_table_order_by(string $table, array $champs, $champ){
   echo "<table style='border: solid 1px black;'>";
   echo "<tr>";
   foreach($champs as $champ) {
@@ -51,5 +51,5 @@ function parcourir_table(string $table, array $champs, $champ){
   echo "</table>";
 }
 
-parcourir_table('utilisateurs',['id','nom','prenom','email','motdepasse'],"'prenom'");
+parcourir_table_order_by('utilisateurs',['id','nom','prenom','email','motdepasse'],"'prenom'");
 ?>
