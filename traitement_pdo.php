@@ -1,9 +1,6 @@
  <?php
 // Paramètres de connexion à la base de données
-$serveur = "localhost";
-$utilisateur = "root";
-$motdepasse = "ckSpient152$";
-$base = "test";
+require 'config_bd.php';
 
 // Connexion à la base de données MySQL
 try {
