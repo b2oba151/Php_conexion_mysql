@@ -1,5 +1,5 @@
 <?php 
-function parcourir_table_where(string $table, array $champs,$chanp,mixed $condition, mixed $valeur){
+function parcourir_table(string $table, array $champs, $champ){
   echo "<table style='border: solid 1px black;'>";
   echo "<tr>";
   foreach($champs as $champ) {
@@ -31,12 +31,7 @@ function parcourir_table_where(string $table, array $champs,$chanp,mixed $condit
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $champs_str = implode(",", $champs);
-    $stmt = $conn->prepare("SELECT $champs_str FROM $table  WHERE  ".$chanp."".$condition."".$valeur. "");
-  //   $stmt = $conn->prepare(<<<SQL
-  //   SELECT $champs_str FROM $table
-  //   WHERE $champ $condition $valeur
-  // SQL);
-
+    $stmt = $conn->prepare("SELECT ".$champs_str." FROM  ".$table." ORDER BY ". $champ);
     $stmt->execute();
 
     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -50,5 +45,5 @@ function parcourir_table_where(string $table, array $champs,$chanp,mixed $condit
   echo "</table>";
 }
 
-parcourir_table_where('utilisateurs',['id','nom','prenom','email','motdepasse'],'id','>',"'18'")
+parcourir_table('utilisateurs',['id','nom','prenom','email','motdepasse'], 'nom');
 ?>
