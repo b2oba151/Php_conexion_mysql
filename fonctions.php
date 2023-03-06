@@ -86,9 +86,9 @@ function insertion_multiple(){
       return $sql;
     };
     // exécuter les requêtes SQL
-    $conn->exec(element('John', 'Doe', 'john@example.com', 'mdp1'));
-    $conn->exec(element('Mary', 'Moe', 'mary@example.com', 'mdp2'));
-    $conn->exec(element('Julie', 'Dooley', 'julie@example.com', 'mdp3'));
+    // $conn->exec(element('John', 'Doe', 'john@example.com', 'mdp1'));
+    // $conn->exec(element('Mary', 'Moe', 'mary@example.com', 'mdp2'));
+    // $conn->exec(element('Julie', 'Dooley', 'julie@example.com', 'mdp3'));
     // valider la transaction
     $conn->commit();
     echo "Nouveaux enregistrements créés avec succès";
@@ -100,7 +100,7 @@ function insertion_multiple(){
   $conn = null;
 }
 
-insertion_multiple();
+// insertion_multiple();
 ?>
 
 <?php
@@ -139,26 +139,26 @@ function insertion_multiple2($donnees){
   $conn = null;
 }
 
-$donnees = [
-  [
-    'nom' => 'John', 
-    'prenom' => 'Doe', 
-    'email' => 'john@example.com', 
-    'motdepasse' => 'mdp1',
-  ],
-  [
-    'nom' => 'Mary', 
-    'prenom' => 'Moe', 
-    'email' => 'mary@example.com', 
-    'motdepasse' => 'mdp2',
-  ],
-  [
-    'nom' => 'Julie', 
-    'prenom' => 'Dooley', 
-    'email' => 'julie@example.com', 
-    'motdepasse' => 'mdp3',
-  ],
-];
+// $donnees = [
+//   [
+//     'nom' => 'John', 
+//     'prenom' => 'Doe', 
+//     'email' => 'john@example.com', 
+//     'motdepasse' => 'mdp1',
+//   ],
+//   [
+//     'nom' => 'Mary', 
+//     'prenom' => 'Moe', 
+//     'email' => 'mary@example.com', 
+//     'motdepasse' => 'mdp2',
+//   ],
+//   [
+//     'nom' => 'Julie', 
+//     'prenom' => 'Dooley', 
+//     'email' => 'julie@example.com', 
+//     'motdepasse' => 'mdp3',
+//   ],
+// ];
 
-insertion_multiple($donnees);
+// insertion_multiple2($donnees);
 ?>
