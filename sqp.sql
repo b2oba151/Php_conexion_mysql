@@ -26,3 +26,4 @@ CREATE TABLE utilisateurs (
   password VARCHAR(255) NOT NULL,
   role ENUM('candidat', 'recruteur') NOT NULL
 );
+--nonnnfghgyh
