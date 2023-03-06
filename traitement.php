@@ -24,7 +24,7 @@ if (!$connexion) {
         $motdepasse = $_POST["motdepasse"];
         // et ainsi de suite pour tous les autres champs
         
-        // Insérez les données dans la base de données MySQL
+        // Insérez les données dans la base de données [test] et dans la table [utiisateur] MySQL
         $requete = "INSERT INTO `utilisateur` (nom, prenom, email, motdepasse) VALUES ('$nom','$prenom', '$email', '$motdepasse')";
         
         if (mysqli_query($connexion, $requete)) {

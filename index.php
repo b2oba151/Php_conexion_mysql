@@ -12,7 +12,7 @@
 <body>
     <div class="main">
     <h1>Formulaire d'inscription</h1>
-    <form action="traitement.php" method="post">
+    <form action="traitement_pdo.php" method="post">
 
         <table>
 
