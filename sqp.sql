@@ -18,12 +18,14 @@ IF user_count = 0 THEN
 END IF;
 
 -- Création de la table "utilisateurs"
-CREATE TABLE utilisateurs (
-  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(255) NOT NULL,
-  prenom VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  role ENUM('candidat', 'recruteur') NOT NULL
-);
+CREATE TABLE IF NOT EXISTS `utilisateurs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `motdepasse` varchar(255) NOT NULL,
+  `date_creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --nonnnfghgyh
