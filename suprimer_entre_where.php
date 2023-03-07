@@ -16,6 +16,4 @@ function supprimer_entre_where(string $table, string $champ, mixed $condition, m
     $conn = null;
   }
   
-  supprimer_entre_where('utilisateurs', 'id', '>', '18');
-  
-?>
+  supprimer_entre_where('utilisateurs', 'id', '=', '24');

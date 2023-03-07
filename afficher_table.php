@@ -1,49 +1,58 @@
-<?php 
-function parcourir_table(string $table, array $champs){
-  echo "<table style='border: solid 1px black;'>";
-  echo "<tr>";
-  foreach($champs as $champ) {
-    echo "<th>$champ</th>";
-  }
-  echo "</tr>";
+<?php require_once 'header_html.php' ?>
+      
+      <?php 
+          function parcourir_table(string $table, array $champs){
 
-  class TableRows extends RecursiveIteratorIterator {
-    function __construct($it) {
-      parent::__construct($it, self::LEAVES_ONLY);
-    }
+                afficherDebutTableau();
+                
+                foreach($champs as $champ) {
+                  echo "<th>$champ</th>";
+                }
+                    echo "</tr>";
+              echo" </thead>";
 
-    function current() {
-      return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
-    }
+              
+                class TableRows extends RecursiveIteratorIterator {
+                  function __construct($it) {
+                    parent::__construct($it, self::LEAVES_ONLY);
+                  }
 
-    function beginChildren() {
-      echo "<tr>";
-    }
+                  function current() {
+                    return "<td >" . parent::current(). "</td>";
+                  }
 
-    function endChildren() {
-      echo "</tr>" . "\n";
-    }
-  }
+                  function beginChildren() {
+                    echo "<tr>";
+                  }
 
-  try {
-    require 'config_bd.php';
-    $conn = new PDO("mysql:host=$serveur;dbname=$base", $utilisateur, $motdepasse);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                  function endChildren() {
+                    echo "</tr>" . "\n";
+                  }
+                }
 
-    $champs_str = implode(",", $champs);
-    $stmt = $conn->prepare("SELECT $champs_str FROM $table");
-    $stmt->execute();
+                try {
+                  require 'config_bd.php';
+                  $conn = new PDO("mysql:host=$serveur;dbname=$base", $utilisateur, $motdepasse);
+                  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-      echo $v;
-    }
-  } catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
-  }
-  $conn = null;
-  echo "</table>";
-}
+                  $champs_str = implode(",", $champs);
+                  $stmt = $conn->prepare("SELECT $champs_str FROM $table");
+                  $stmt->execute();
 
-parcourir_table('utilisateurs',['id','nom','prenom','email','motdepasse'])
-?>
+                  $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                  foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+                    echo $v;
+                  }
+                } catch(PDOException $e) {
+                  echo "Error: " . $e->getMessage();
+                }
+                $conn = null;
+              //   echo "</table>";
+                echo <<<HTML
+                              </div>
+                              </table >
+                              HTML;
+              }
+
+              parcourir_table('utilisateurs',['id','nom','prenom','email','motdepasse'])
+      ?>
