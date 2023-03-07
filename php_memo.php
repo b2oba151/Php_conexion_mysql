@@ -46,6 +46,39 @@ echo "Ce ", "chaîne de caractères ", "est ", "fait ", "avec plusieurs paramèt
 <!--  -->
 
 
+<!-- date -->
+
+      <!-- H - Format 24 heures d'une heure (00 à 23)
+      h - format 12 heures d'une heure avec des zéros non significatifs (01 à 12)
+      i - Minutes avec des zéros non significatifs (00 à 59)
+      s - Secondes avec des zéros non significatifs (00 à 59)
+      a - Minuscule Ante meridiem et Post meridiem (am ou pm) 
+      d - Représente le jour du mois (01 à 31)
+      m - Représente un mois (01 à 12)
+      Y - Représente une année (en quatre chiffres)
+      l (minuscule 'L') - Représente le jour de la semaine-->
+      <?php
+            echo "L'heure est " . date("H:i:s");//22:16:12
+            ?>
+
+            <?php
+            date_default_timezone_set("America/New_York");//fuseau horaire usa/ny
+            echo "L'heure est " . date("h:i:sa");//01:25:36 pm
+            ?>
+
+            <?php
+            echo "Aujourd'hui, c'est" . date("Y/m/d") . "<br>";//Aujourd'hui, c'est2023/03/06
+            echo "L'heure est " . date("Y.m.d") . "<br>";
+            echo "L'heure est " . date("Y---m-d") . "<br>";//L'heure est 2023---03-06
+            echo "L'heure est " . date("l");//L'heure est Monday
+            ?>
+
+            <?php
+            $d=mktime(11, 14, 54, 8, 12, 2014);
+            echo "La date de création est " . date("Y-m-d h:i:s a", $d)." = ".$d." secondes depuis 1er janvier 1970 00:00:00 GMT";//La date de création est 2014-08-12 11:14:54 am = 1407842094 secondes depuis 1er janvier 1970 00:00:00 GMT
+      ?>
+<!--  -->
+
 <?php $x = 5985;
 var_dump(is_int($x)); //bool(true) 
 $x = 1.9e411;
@@ -186,6 +219,25 @@ var_dump(is_numeric($x));
 
 
     */
+<!--  -->
+
+<!-- expression reguliere -->
+      <!--  
+      "/\b(?:(?:https?|ftp)://|www.)[-a-z0-9+&@#/%?=_|!:,.;]*[-a-z0-9+&@#/%=_|]/i"  expression régulière qui est utilisée pour identifier les URL dans une chaîne de caractères.
+
+      Le "\b" au début de l'expression signifie une limite de mot. Ensuite, l'expression "(?:(?:https?|ftp)://|www.)" permet de rechercher des chaînes commençant soit par "http://", "https://", "ftp://", ou "www.".
+
+      Le reste de l'expression régulière est utilisé pour identifier les parties restantes de l'URL, qui peuvent contenir des lettres minuscules et majuscules de l'alphabet anglais, des chiffres, des signes de ponctuation tels que -, +, &, @, #, %, /, =, ~, _, |, !, :, ,, ;, ainsi que des caractères de contrôle.
+
+      Le "/i" à la fin de l'expression signifie que la recherche est insensible à la casse, ce qui signifie que la recherche sera effectuée sur les lettres minuscules et majuscules de l'alphabet anglais.
+      ---------------------------------------------------------------------------------------------------------
+      "/^[a-zA-Z-' ]*$/"  expression régulière qui est utilisée pour vérifier si une chaîne de caractères ne contient que des lettres de l'alphabet anglais (majuscules et minuscules), des tirets, des apostrophes et des espaces.
+
+      Le signe ^ au début de l'expression signifie que la chaîne doit commencer par les caractères spécifiés, tandis que le signe $ à la fin signifie que la chaîne doit se terminer par ces mêmes caractères.
+
+      Le groupe de caractères entre les crochets [] spécifie les caractères autorisés dans la chaîne. Dans ce cas, les lettres majuscules et minuscules de l'alphabet anglais (a à z et A à Z), ainsi que les tirets, apostrophes et espaces sont autorisés.
+
+      -->
 <!--  -->
 
 <!-- verification email  et et lien -->
